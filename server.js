@@ -211,7 +211,9 @@ app.set('trust proxy', 1);
 app.use(helmet({ contentSecurityPolicy: false, crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(cors({ origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : true }));
 app.use(express.json({ limit: '100kb' }));
-
+app.get("/", (req, res) => {
+  res.send("Mlob Doung Coffee Server is running!");
+});
 // Auth middleware
 function requireAdmin(req, res, next) {
   const h = req.headers.authorization || '';
